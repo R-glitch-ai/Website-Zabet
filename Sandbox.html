@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Sandbox</title>
+        <h1 id ="create">Create Your Simple Website</h1>
+    </head>
+    <style>
+        #create{font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif}
+            .checked{
+                text-decoration: line-through;
+            }
+            #create{text-align:center}
+            #btnn{float:right }
+        </style>
+    <body class="page">
+        
+        
+        <h2>Submit Your Ideas</h2>
+        <input id=inpt type=text placeholder="Your Ideas">
+        <button id=Btn>Submit</button>
+        <div id="content"></div>
+        <script>
+            document.getElementById('content').innerHTML=localStorage.getItem('listItems');
+            document.getElementById('Btn').addEventListener('click',function()
+            {
+                var a=document.createElement('li')
+
+                var c =document.createElement('input')
+            c.setAttribute('type', 'checkbox')
+            c.addEventListener('change',checkItem)
+            a.append(c)
+            
+               a.append( document.getElementById('inpt').value);
+                
+            var b =document.createElement('button')
+            b.addEventListener('click',removeItem)
+            b.innerHTML='X'
+            a.append(b)
+            
+
+               document.getElementById('content').append(a);
+               localStorage.setItem('listItems', document.getElementById('content').innerHTML)
+               
+
+                
+
+            })
+        function removeItem(){
+       this.parentNode.remove()
+       localStorage.setItem('listItems', document.getElementById('content').innerHTML)
+        }
+       function checkItem(){
+           this.parentNode.classList.toggle('checked')
+
+       }
+       
+        
+        </script>
+        <h2 id="myHeading">Choose A Color</h2>
+        <button id="changeBtn">Change Color</button>
+        <input id="input" type="text" placeholder = "Choose a color">       
+        <script>
+        document.getElementById('changeBtn').addEventListener('click',function()
+        {document.getElementById('create').style.color=document.getElementById('input').value;
+        
+        })
+        
+    </script>
+    <h2 id="Heading">Change Background Color</h2>
+    <button id="Bttn">Change Background Color</button>
+    <input id="inputt" type="text" placeholder = "Choose a color">       
+    <script>
+    document.getElementById('Bttn').addEventListener('click',function()
+    {document.getElementsByClassName('page')[0].style.backgroundColor =document.getElementById('inputt').value;
+    })
+    </script>
+    
+    <br>
+   <button id = "btnn" onclick="window.location.href='Ricky.html'">Main Page</button>
+    
+
+
+    
+
+
+   
+   
+   
+   
+   
+   
+   
+   
+   
+    </body>
+    </html>
